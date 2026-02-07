@@ -168,6 +168,11 @@ async fn main() {
     let app = Router::new()
         .route("/fetch", post(fetch_handler))
         .route("/health", get(health))
+        .nest_service(
+            "/",
+            tower_http::services::ServeDir::new("dist")
+                .fallback(tower_http::services::ServeFile::new("dist/index.html")),
+        )
         .layer(cors)
         .with_state(state);
 

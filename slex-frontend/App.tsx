@@ -16,7 +16,7 @@ const prepareFetchedHtml = (rawHtml: string, baseUrl: string) => {
     try {
         const parser = new DOMParser();
         const doc = parser.parseFromString(rawHtml, 'text/html');
-        
+
         if (!doc.querySelector('base')) {
             const base = doc.createElement('base');
             base.href = baseUrl;
@@ -43,12 +43,12 @@ function App() {
     const [url, setUrl] = useState(DEFAULT_URL);
     const [htmlContent, setHtmlContent] = useState<string>(SAMPLE_PAGES[DEFAULT_URL]);
     const [isLoading, setIsLoading] = useState(false);
-    
+
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [pasteModalOpen, setPasteModalOpen] = useState(false);
-    
+
     const iframeRootRef = useRef<HTMLElement | null>(null);
-    
+
     const [treeRoot, setTreeRoot] = useState<DOMTreeNode | null>(null);
     const [nodeCount, setNodeCount] = useState(0);
     const [inspectorState, setInspectorState] = useState<InspectorState>({
@@ -57,7 +57,7 @@ function App() {
         cssPath: '',
         xPath: ''
     });
-    
+
     const [queryResults, setQueryResults] = useState<HTMLElement[]>([]);
 
     const handleLoadUrl = useCallback(async (newUrl: string) => {
@@ -75,13 +75,13 @@ function App() {
         }
 
         if (newUrl.startsWith('local://')) {
-             setIsLoading(false);
-             return;
+            setIsLoading(false);
+            return;
         }
 
         try {
             // Use local proxy
-            const PROXY_URL = import.meta.env.VITE_PROXY_URL || 'http://localhost:3001';
+            const PROXY_URL = import.meta.env.VITE_PROXY_URL ?? '';
             const response = await fetch(`${PROXY_URL}/fetch`, {
                 method: 'POST',
                 headers: {
@@ -89,9 +89,9 @@ function App() {
                 },
                 body: JSON.stringify({ url: newUrl }),
             });
-            
+
             if (!response.ok) throw new Error(`Proxy responded with ${response.status}`);
-            
+
             const data = await response.json();
             const rawText = data.html; // The proxy returns { html: "...", ... }
 
@@ -137,7 +137,7 @@ function App() {
         };
         if (tree) countNodes(tree);
         setNodeCount(count);
-        
+
         setInspectorState({ selectedNodeId: null, selectedElement: null, cssPath: '', xPath: '' });
         setQueryResults([]);
     }, []);
@@ -178,8 +178,8 @@ function App() {
 
     return (
         <div className="bg-paper text-ink h-screen flex flex-col overflow-hidden text-sm selection:bg-ink selection:text-paper">
-            <Header 
-                url={url} 
+            <Header
+                url={url}
                 nodeCount={nodeCount}
                 onUrlChange={setUrl}
                 onLoad={handleLoadUrl}
@@ -188,7 +188,7 @@ function App() {
             />
 
             <div className="flex-1 flex overflow-hidden relative">
-                <TreeSidebar 
+                <TreeSidebar
                     isOpen={sidebarOpen}
                     onClose={() => setSidebarOpen(false)}
                     treeRoot={treeRoot}
@@ -197,7 +197,7 @@ function App() {
                 />
 
                 <main className="flex-1 flex flex-col relative min-w-0 overflow-hidden">
-                    <BrowserViewport 
+                    <BrowserViewport
                         htmlContent={htmlContent}
                         selectedNodeId={inspectorState.selectedNodeId}
                         onElementClick={handleElementClick}
@@ -214,7 +214,7 @@ function App() {
                     )}
                 </main>
 
-                <Inspector 
+                <Inspector
                     inspectorState={inspectorState}
                     onExtract={handleQueryExtract}
                     queryResults={queryResults}
@@ -222,10 +222,10 @@ function App() {
                 />
             </div>
 
-            <PasteModal 
-                isOpen={pasteModalOpen} 
-                onClose={() => setPasteModalOpen(false)} 
-                onLoad={handleCustomHtmlLoad} 
+            <PasteModal
+                isOpen={pasteModalOpen}
+                onClose={() => setPasteModalOpen(false)}
+                onLoad={handleCustomHtmlLoad}
             />
         </div>
     );

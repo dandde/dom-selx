@@ -100,6 +100,7 @@ npm run dev
 2.  Connect your GitHub repository.
 3.  **Name**: `slex-proxy` (or your choice).
 4.  **Runtime**: **Docker**.
+    *   *Note*: This Docker image now builds **both** the React frontend and Rust backend. The backend serves the frontend static files on port `3001`.
 5.  **Root Directory**: `.` (default) - **Do not set to `slex-proxy`**.
 6.  **Region**: Choose closest to you.
 7.  **Instance Type**: Free.
