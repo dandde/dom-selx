@@ -9,7 +9,11 @@ RUN npm run build
 # --- Backend Build Stage ---
 FROM rust:alpine AS backend-builder
 WORKDIR /usr/src/slex-proxy
-RUN apk add --no-cache musl-dev openssl-dev
+RUN apk add --no-cache musl-dev openssl-dev openssl-libs-static pkgconfig
+ENV OPENSSL_STATIC=1
+ENV OPENSSL_LIB_DIR=/usr/lib
+ENV OPENSSL_INCLUDE_DIR=/usr/include
+ENV PKG_CONFIG_ALL_STATIC=1
 COPY slex-proxy/Cargo.toml slex-proxy/Cargo.lock ./
 RUN mkdir src && echo "fn main() {}" > src/main.rs
 RUN cargo build --release
