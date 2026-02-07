@@ -7,10 +7,10 @@ Slex is designed as a hybrid local/cloud architecture to enable powerful DOM ins
 ### Architecture Overview
 
 ```mermaid
-graph LR
-    User[User / Browser] -->|Interacts| Frontend[slex-frontend (React)]
-    Frontend -->|POST /fetch| Proxy[slex-proxy (Rust)]
-    Proxy -->|GET| Target[Target Website (e.g., GitHub)]
+graph TD
+    User["User / Browser"] -->|Interacts| Frontend["slex-frontend (React)"]
+    Frontend -->|POST /fetch| Proxy["slex-proxy (Rust)"]
+    Proxy -->|GET| Target["Target Website (e.g., GitHub)"]
     Target -->|HTML| Proxy
     Proxy -->|Sanitized HTML| Frontend
 ```
