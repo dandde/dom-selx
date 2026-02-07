@@ -7,14 +7,14 @@ WORKDIR /usr/src/slex-proxy
 RUN apk add --no-cache musl-dev openssl-dev
 
 # Copy manifests first for improved caching
-COPY Cargo.toml Cargo.lock ./
+COPY slex-proxy/Cargo.toml slex-proxy/Cargo.lock ./
 
 # Create a dummy main.rs to build dependencies
 RUN mkdir src && echo "fn main() {}" > src/main.rs
 RUN cargo build --release
 
 # Copy actual source code
-COPY src ./src
+COPY slex-proxy/src ./src
 
 # Touch main.rs to force rebuild
 RUN touch src/main.rs

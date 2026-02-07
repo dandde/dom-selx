@@ -92,3 +92,20 @@ npm run dev
 ### Long Term (Scale)
 - [ ] **Distributed Proxying**: Support rotating proxies to avoid rate limiting.
 - [ ] **Project Persistence**: Save and load scraping projects/sessions.
+
+## ☁️ Deployment
+
+### Render (Docker)
+1.  Create a **New Web Service** on Render.
+2.  Connect your GitHub repository.
+3.  **Name**: `slex-proxy` (or your choice).
+4.  **Runtime**: **Docker**.
+5.  **Root Directory**: `.` (default) - **Do not set to `slex-proxy`**.
+6.  **Region**: Choose closest to you.
+7.  **Instance Type**: Free.
+8.  **Environment Variables**: None required.
+9.  Click **Create Web Service**.
+
+> **Note**: simpler deployment! We moved `Dockerfile` to the root, so you don't need to change "Root Directory" or "build context" settings. Default settings work!
+
+
