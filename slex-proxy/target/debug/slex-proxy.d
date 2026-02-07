@@ -1,1 +1,0 @@
-/Volumes/Mac_Data/Mac_mini/development/react/gemini/dom_selector_xpath/dom-selx/slex-proxy/target/debug/slex-proxy: /Volumes/Mac_Data/Mac_mini/development/react/gemini/dom_selector_xpath/dom-selx/slex-proxy/src/main.rs

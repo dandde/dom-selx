@@ -1,9 +1,0 @@
-/Volumes/Mac_Data/Mac_mini/development/react/gemini/dom_selector_xpath/dom-selx/slex-proxy/target/debug/deps/utf8_iter-a16818067ba4f5b3.d: /Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/lib.rs /Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/indices.rs /Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/report.rs
-
-/Volumes/Mac_Data/Mac_mini/development/react/gemini/dom_selector_xpath/dom-selx/slex-proxy/target/debug/deps/libutf8_iter-a16818067ba4f5b3.rlib: /Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/lib.rs /Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/indices.rs /Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/report.rs
-
-/Volumes/Mac_Data/Mac_mini/development/react/gemini/dom_selector_xpath/dom-selx/slex-proxy/target/debug/deps/libutf8_iter-a16818067ba4f5b3.rmeta: /Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/lib.rs /Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/indices.rs /Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/report.rs
-
-/Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/lib.rs:
-/Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/indices.rs:
-/Users/bhikkhuido/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/utf8_iter-1.0.4/src/report.rs:
