@@ -1,0 +1,5 @@
+{
+  "name": "DOM Reader OS",
+  "description": "An E-Ink themed DOM inspector and browser simulation tool for visualizing HTML structure, CSS selectors, and XPath.",
+  "requestFramePermissions": []
+}
