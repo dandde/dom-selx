@@ -9,10 +9,10 @@ interface BrowserViewportProps {
     highlightedElements: HTMLElement[];
 }
 
-const BrowserViewport: React.FC<BrowserViewportProps> = ({ 
-    htmlContent, 
-    selectedNodeId, 
-    onElementClick, 
+const BrowserViewport: React.FC<BrowserViewportProps> = ({
+    htmlContent,
+    selectedNodeId,
+    onElementClick,
     onDomParsed,
     highlightedElements
 }) => {
@@ -31,16 +31,18 @@ const BrowserViewport: React.FC<BrowserViewportProps> = ({
                 const style = doc.createElement('style');
                 style.textContent = `
                     .dom-reader-highlight-selected {
-                        outline: 2px solid #111111 !important;
-                        background-color: rgba(224, 255, 205, 0.2) !important;
+                        outline: 0px solid #111111 !important;
+                        background-color: rgba(142, 142, 142, 0.8) !important;
+                        color: #fff !important;
                         position: relative;
                         cursor: pointer;
                         z-index: 10000;
+                        filter: blur(0.5px);
                     }
                     .dom-reader-highlight-query {
                         background-color: #111111 !important;
                         color: #fff !important;
-                        outline: 2px dashed #555;
+                        outline: 1px dashed #555;
                     }
                     body { cursor: default; }
                     *:hover { box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2); }
@@ -70,7 +72,7 @@ const BrowserViewport: React.FC<BrowserViewportProps> = ({
     useEffect(() => {
         const doc = iframeRef.current?.contentDocument;
         if (!doc) return;
-        
+
         const prevSelected = doc.querySelectorAll('.dom-reader-highlight-selected');
         prevSelected.forEach(el => el.classList.remove('dom-reader-highlight-selected'));
 
@@ -85,23 +87,23 @@ const BrowserViewport: React.FC<BrowserViewportProps> = ({
 
     // Handle Query Highlights
     useEffect(() => {
-         const doc = iframeRef.current?.contentDocument;
-         if (!doc) return;
+        const doc = iframeRef.current?.contentDocument;
+        if (!doc) return;
 
-         const prevHighlights = doc.querySelectorAll('.dom-reader-highlight-query');
-         prevHighlights.forEach(el => el.classList.remove('dom-reader-highlight-query'));
+        const prevHighlights = doc.querySelectorAll('.dom-reader-highlight-query');
+        prevHighlights.forEach(el => el.classList.remove('dom-reader-highlight-query'));
 
-         highlightedElements.forEach(el => {
-             if (el.ownerDocument === doc) {
+        highlightedElements.forEach(el => {
+            if (el.ownerDocument === doc) {
                 el.classList.add('dom-reader-highlight-query');
-             }
-         });
+            }
+        });
     }, [highlightedElements]);
 
     return (
         <div className="flex-1 flex flex-col relative min-w-0 bg-[#e5e5e5]">
-             {/* Browser Toolbar */}
-             <div className="bg-paper border-b border-ink h-8 flex items-center px-4 justify-between select-none shrink-0">
+            {/* Browser Toolbar */}
+            <div className="bg-paper border-b border-ink h-8 flex items-center px-4 justify-between select-none shrink-0">
                 <div className="flex space-x-2">
                     <div className="w-2.5 h-2.5 border border-ink bg-white hover:bg-ink transition-colors"></div>
                     <div className="w-2.5 h-2.5 border border-ink bg-white hover:bg-ink transition-colors"></div>
@@ -117,11 +119,11 @@ const BrowserViewport: React.FC<BrowserViewportProps> = ({
 
             {/* Iframe Wrapper with Pattern */}
             <div className="flex-1 w-full h-full relative iframe-bg-pattern">
-                 <iframe 
+                <iframe
                     ref={iframeRef}
                     title="Simulated Browser View"
                     className="w-full h-full border-none bg-white block shadow-lg"
-                    sandbox="allow-same-origin allow-scripts" 
+                    sandbox="allow-same-origin allow-scripts"
                 />
             </div>
         </div>

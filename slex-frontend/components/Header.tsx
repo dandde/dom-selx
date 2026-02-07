@@ -24,16 +24,16 @@ const Header: React.FC<HeaderProps> = ({ url, nodeCount, onUrlChange, onLoad, on
 
     return (
         <header className="h-14 bg-paper border-b border-ink flex items-center px-4 shrink-0 z-30 select-none">
-            <button 
+            <button
                 className="mr-4 lg:hidden p-1 border border-transparent hover:border-ink transition-all"
                 onClick={onSidebarToggle}
             >
                 <span className="material-symbols-outlined text-ink">menu</span>
             </button>
-            
+
             <div className="flex items-center mr-6 border-r border-ink pr-6 h-full">
                 <span className="material-symbols-outlined mr-2">travel_explore</span>
-                <span className="font-bold tracking-tight">DOM_BROWSER</span>
+                <span className="font-bold tracking-tight">DOM_SELX</span>
             </div>
 
             {/* URL Input */}
@@ -42,16 +42,16 @@ const Header: React.FC<HeaderProps> = ({ url, nodeCount, onUrlChange, onLoad, on
                     <span className="px-3 bg-paper-dark border-r border-ink text-xs font-bold text-ink-light h-full flex items-center">
                         <span className="material-symbols-outlined text-[16px] mr-1">lock</span> HTTPS
                     </span>
-                    <input 
-                        className="w-full bg-transparent border-none text-ink px-3 py-1 font-mono text-xs focus:outline-none placeholder-gray-400" 
-                        type="text" 
+                    <input
+                        className="w-full bg-transparent border-none text-ink px-3 py-1 font-mono text-xs focus:outline-none placeholder-gray-400"
+                        type="text"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         onKeyDown={handleKeyDown}
                         placeholder="Enter URL (e.g., https://example.com)..."
                     />
                 </div>
-                <button 
+                <button
                     onClick={() => onLoad(inputValue)}
                     className="ml-3 border border-ink bg-ink text-white px-5 h-9 uppercase text-xs font-bold hover:bg-white hover:text-ink transition-all flex items-center shadow-hard active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
                 >
